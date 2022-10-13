@@ -24,7 +24,7 @@ const StarshipList = () => {
             state={{ starship }}
           >
             <div key={starship.name}>
-              {starship.name}  
+              {starship.name} 
             </div>
           </Link> 
         )}

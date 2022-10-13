@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { getDetails } from '../../services/sw-api'
 import { Link } from 'react-router-dom'
+import PilotList from '../PilotList/PilotList'
 
 const StarshipDetails = () => {
   const [starshipDetails, setStarshipDetails] = useState({})
@@ -22,6 +23,7 @@ const StarshipDetails = () => {
         <>
           <h4>NAME: {starshipDetails.name}</h4>
           <h4>MODEL: {starshipDetails.model}</h4>
+          <h4>PILOTS: <PilotList starship={starshipDetails} /></h4>
           <Link
             to="/"
           >
