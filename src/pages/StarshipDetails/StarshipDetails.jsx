@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { getDetails } from '../../services/sw-api'
 import { Link } from 'react-router-dom'
 import PilotList from '../PilotList/PilotList'
+import './StarshipDetails.css'
 
 const StarshipDetails = () => {
   const [starshipDetails, setStarshipDetails] = useState({})
@@ -18,23 +19,28 @@ const StarshipDetails = () => {
 
   return ( 
     <>
-      <div>
-        {starshipDetails.name ?
-        <>
-          <h4>NAME: {starshipDetails.name}</h4>
-          <h4>MODEL: {starshipDetails.model}</h4>
-          <h4>PILOTS: <PilotList starship={starshipDetails} /></h4>
-          <Link
-            to="/"
-          >
-            <p>RETURN</p>
-          </Link>
-        </>
-        :
-        <>
-          <p>Loading starship details... please hold</p>
-        </>
-        }
+      <div className='page'>
+        <div id='title'>
+          <h3>STARSHIP DETAILS</h3>
+        </div>
+        <div className='details-container'>
+          {starshipDetails.name ?
+          <>
+            <h4><span>NAME: </span>{starshipDetails.name}</h4>
+            <h4><span>MODEL: </span>{starshipDetails.model}</h4>
+            <h4><span>PILOTS: </span><PilotList starship={starshipDetails} /></h4>
+            <Link
+              to="/"
+            >
+              <p>RETURN</p>
+            </Link>
+          </>
+          :
+          <>
+            <p>Loading starship details... please hold</p>
+          </>
+          }
+        </div>
       </div>
     </> 
   );

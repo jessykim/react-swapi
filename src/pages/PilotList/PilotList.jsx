@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { getPilots } from '../../services/sw-api'
+import './PilotList.css'
 
 const PilotList = (props) => {
   const [pilots, setPilots] = useState([])
@@ -16,17 +17,17 @@ const PilotList = (props) => {
   return ( 
     <>
       {pilots.length ?
-      <>
+        <>
         {pilots.map(pilot => 
-          <p>
+          <p key={pilot.name}>
             {pilot.name}
           </p>
         )}
-      </>
-      :
-      <>
-        <p>No Pilots</p>
-      </>
+        </>
+        :
+        <>
+          <p>No Pilots</p>
+        </>
       }
     </>
   );
