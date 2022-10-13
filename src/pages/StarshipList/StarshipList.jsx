@@ -1,25 +1,32 @@
 import { useState, useEffect } from 'react'
 import { getAllStarships } from '../../services/sw-api'
+import { Link } from 'react-router-dom'
 
 const StarshipList = () => {
   const [starships, setStarships] = useState([])
 
   useEffect(() => {
-    const fetchStarshipList = async () => {
+    const fetchStarshipData = async () => {
       const starshipData = await getAllStarships()
       setStarships(starshipData.results)
     }
-    fetchStarshipList()
+    fetchStarshipData()
   }, [])
 
   return ( 
     <>
-      <h3>Starship List</h3>
+      <h3>STAR WARS STARSHIPS</h3>
       <div className='ship-container'>
-        {starships.map(starshipName => 
-          <div>
-            {starshipName.name}  
-          </div>
+        {starships.map(starship => 
+          <Link
+            key={starship.name}
+            to="/starship"
+            state={{ starship }}
+          >
+            <div key={starship.name}>
+              {starship.name}  
+            </div>
+          </Link> 
         )}
       </div>
     </> 
